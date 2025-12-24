@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOGHO - Modern Fashion Homepage</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary-bg: #ffffff;
+        --accent-pink: #ff2e63;
+        --glass-bg: rgba(255, 255, 255, 0.2);
+        --glass-border: rgba(255, 255, 255, 0.5);
+        --text-dark: #1a1a1a;
+        --gradient-bg: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: var(--primary-bg);
+        color: var(--text-dark);
+        overflow-x: hidden;
+    }
+    
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        background: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .logo {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+    
+    nav a {
+        margin: 0 20px;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 400;
+    }
+    
+    .btn-top {
+        background: #d4f8e2;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 0 8%;
+        background: var(--gradient-bg);
+        position: relative;
+    }
+    
+    .hero-content {
+        flex: 1;
+        z-index: 2;
+    }
+    
+    .main-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 72px;
+        line-height: 1.1;
+        margin-bottom: 30px;
+    }
+    
+    .btn-discover {
+        background: var(--accent-pink);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(255, 46, 99, 0.3);
+    }
+    
+    .hero-images {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+    }
+    
+    .glass-card {
+        width: 300px;
+        height: 300px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        position: absolute;
+        transition: transform 0.3s ease;
+    }
+    
+    .glass-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card-1 { transform: rotate(-10deg) translateX(-180px); z-index: 1; }
+    .card-2 { transform: translateY(-20px); z-index: 2; }
+    .card-3 { transform: rotate(10deg) translateX(180px); z-index: 3; }
+    
+    /* Features */
+    .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        padding: 60px 8%;
+    }
+    
+    .feature-item {
+        padding: 30px;
+        border: 1px solid #eee;
+        border-radius: 15px;
+        text-align: center;
+    }
+    
+    /* Content Split Area */
+    .content-split {
+        display: flex;
+        padding: 80px 8%;
+        gap: 50px;
+    }
+    
+    .community-box {
+        margin-top: 40px;
+        padding: 40px;
+        background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+        border-radius: 15px;
+    }
+    
+    .insta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 30px;
+    }
+    
+    .insta-grid img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    /* Footer */
+    .footer {
+        background: #0d1b2a;
+        color: white;
+        padding: 60px 8% 20px;
+    }
+    
+    .footer-main {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+    
+    .newsletter input {
+        padding: 12px;
+        border-radius: 5px 0 0 5px;
+        border: none;
+    }
+    
+    .newsletter button {
+        padding: 12px 20px;
+        background: #4cc9f0;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .copyright {
+        text-align: center;
+        font-size: 12px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+    }
+    
+    .link-col a {
+      text-decoration: none;
+      color: white;
+    }
+    
+    /* --- RESPONSIVE STYLES (Max Width: 768px) --- */
+    @media screen and (max-width: 768px) {
+        
+        /* 1. Navbar Adjustment */
+        .navbar {
+            padding: 15px 5%;
+            flex-direction: column; /* Stack logo, nav, and button vertically */
+            gap: 15px;
+        }
+    
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+    
+        nav a {
+            margin: 0 10px;
+            font-size: 14px;
+        }
+    
+        /* 2. Hero Section Adjustment */
+        .hero {
+            flex-direction: column;
+            height: auto;
+            padding: 60px 5%;
+            text-align: center;
+        }
+    
+        .main-title {
+            font-size: 42px; /* Smaller font for mobile screens */
+            margin-bottom: 20px;
+        }
+    
+        .hero-images {
+            width: 100%;
+            height: 400px; /* Give space for absolute positioned cards */
+            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .glass-card {
+            width: 180px; /* Smaller cards for mobile */
+            height: 250px;
+        }
+    
+        /* Adjust overlapping cards for smaller screens */
+        .card-1 { transform: rotate(-5deg) translateX(-80px); }
+        .card-2 { transform: translateY(-10px); }
+        .card-3 { transform: rotate(5deg) translateX(80px); }
+    
+        /* 3. Features Section Adjustment */
+        .features {
+            grid-template-columns: 1fr; /* Stack features in 1 column */
+            padding: 40px 5%;
+        }
+    
+        /* 4. Content Split Section Adjustment */
+        .content-split {
+            flex-direction: column; /* Stack text and grid vertically */
+            padding: 40px 5%;
+            gap: 30px;
+        }
+    
+        .text-area {
+            text-align: center;
+        }
+    
+        .community-box {
+            padding: 25px;
+        }
+    
+        .grid-area {
+            width: 100%;
+        }
+    
+        .insta-grid {
+            grid-template-columns: repeat(2, 1fr); /* Keep 2x2 grid for images */
+        }
+    
+        /* 5. Footer Adjustment */
+        .footer-main {
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+        }
+    
+        .footer-links {
+            justify-content: space-around;
+            width: 100%;
+        }
+    
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        .newsletter input {
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+    
+        .newsletter button {
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+    
+    /* --- Small Mobile Adjustment (Max Width: 480px) --- */
+    @media screen and (max-width: 480px) {
+        .hero {
+          height: 65vh;
+        }
+        .main-title {
+            font-size: 32px;
+        }
+    
+        .glass-card {
+            width: 140px;
+            height: 200px;
+        }
+    
+        .card-1 { transform: rotate(-5deg) translateX(-50px); }
+        .card-3 { transform: rotate(5deg) translateX(50px); }
+    }
+    
+    .hero-images {
+      margin-top: 30px;
+    }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">HOGHO</div>
+        <nav>
+            <a href="#">Homes</a>
+            <a href="#">Fabrics</a>
+            <a href="#">Categories</a>
+        </nav>
+        <button class="btn-top">Contact Us</button>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title">REDEFINE YOUR STYLE.</h1>
+            <button class="btn-discover">DISCOVER MORE</button>
+        </div>
+        
+        <div class="hero-images">
+            <div class="glass-card card-1"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" alt="Fashion 1"></div>
+            <div class="glass-card card-2"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=600" alt="Fashion 2"></div>
+            <div class="glass-card card-3"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" alt="Fashion 3"></div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-item">
+            <div class="icon">👤</div>
+            <h3>New Arrivals</h3>
+            <p>Explore the latest trends.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">📋</div>
+            <h3>Collections</h3>
+            <p>Curated seasonal picks.</p>
+        </div>
+        <div class="feature-item">
+            <div class="icon">✨</div>
+            <h3>Lookbook</h3>
+            <p>Style inspirations for you.</p>
+        </div>
+    </section>
+
+    <section class="content-split">
+        <div class="text-area">
+            <h2>THE FUTURE OF FASHION IS HERE.</h2>
+            <p>Experience the perfect blend of sustainable materials and cutting-edge design. Join a community that values authenticity and style.</p>
+            <div class="community-box">
+                <h3>JOIN THE HOGHO COMMUNITY</h3>
+                <p>Be the first to know about new drops and exclusive events.</p>
+            </div>
+        </div>
+        
+        <div class="grid-area">
+            <div class="mini-card">Sustainable Materials</div>
+            <div class="mini-card">Customizable Designs</div>
+            <div class="mini-card">Augmented Try-on</div>
+            <div class="insta-grid">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=300" alt="Style 1">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=300" alt="Style 2">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=300" alt="Style 3">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=300" alt="Style 4">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-logo">SHARED NETWORK</div>
+            <div class="footer-links">
+                <div class="link-col">
+                    <h4>Quick Links</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Pricing</a>
+                </div>
+                <div class="link-col">
+                    <h4>Support</h4>
+                    <a href="#">FAQs</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="newsletter">
+                <input type="email" placeholder="Enter your email">
+                <button>SUBSCRIBE</button>
+            </div>
+        </div>
+        <p class="copyright">© 2025 HOGHO. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+    </footer>
+
+</body>
+</html>
